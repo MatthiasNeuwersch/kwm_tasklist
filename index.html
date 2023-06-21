@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aufgabenliste</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+    <div id="tasklist_manager">
+        <h1>Taskmanager</h1>
+        <form name="taskList" method="post" action="#">
+            <input type="text" name="title" id="title" placeholder="Aufgabe*" required="required">
+            <input type="text" name="person" id="person" placeholder="Person*" required="required">
+
+            <label for="description">Beschreibung</label>
+            <textarea rows="10" id="description" name="description"></textarea>
+            <input type="submit" id="add" value="Hinzufügen" />
+        </form>
+        <nav>
+            <button id="showOpen" value="open">Offene anzeigen</button>
+            <button id="showAll" value="all">Alle anzeigen</button>
+            <button id="removeClosed" value="remove">Geschlossene löschen</button>
+            <button id="filterByPerson">Nach Person filtern</button>
+            <select id="filterByPersonSelector">
+                <option disabled="disabled" selected="selected" value="">-- Person wählen --</option>
+            </select>
+        </nav>
+    </div>
+    <div id="tasklist_viewer">
+        <h1>Tasklist</h1>
+        <div id="tasks_container"></div>
+    </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
