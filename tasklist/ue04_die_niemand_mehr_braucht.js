@@ -2,12 +2,18 @@
 
 window.onload = function () {
     document.getElementById("add").addEventListener("click", addTask);
-    document.getElementById("showOpen").addEventListener("click", showOpen);
-    document.getElementById("showAll").addEventListener("click", showAll);
-    document.getElementById("removeClosed").addEventListener("click", removeClosed);
-    document.getElementById("filterByPerson").addEventListener("click", filterByPerson);
-
+    // document.getElementById("showOpen").addEventListener("click", showOpen);
+    // document.getElementById("showAll").addEventListener("click", showAll);
+    // document.getElementById("removeClosed").addEventListener("click", removeClosed);
+    // document.getElementById("filterByPerson").addEventListener("click", filterByPerson);
 }
+// function checkTask(e){
+//     const task = e.target.closest(".task");
+//     if(e.target.checked)
+//         task.classList.add("done");
+//     else
+//         task.classList.remove("done");
+// }
 function addTask(e) {
     e.preventDefault();
 
@@ -24,7 +30,7 @@ function createTaskElement(title, person, description){
     const task = document.createElement("template");
     task.innerHTML = "<div class='task' data-owner='"+person.value+"'>" +
         "<div class='checkbox_container'>" +
-            "<label>Erledigt<input type='checkbox' onclick='checkTask(event)' name='status'></label>"+
+            "<label>Erledigt<input type='checkbox' name='status'></label>"+
         "</div>" +
         "<div class='taskcontent_container'>" +
             "<div class='task_meta'>"+
@@ -58,48 +64,42 @@ function clearInputs(title, person, description){
     description.value = "";
 }
 
-function checkTask(e){
-    const task = e.target.closest(".task");
-    if(e.target.checked)
-       task.classList.add("done");
-    else
-        task.classList.remove("done");
-}
 
-function showOpen() {
-    const tasks = document.getElementsByClassName("task");
-    for(const task of tasks){
-        if(task.classList.contains("done"))
-            task.classList.add("hidden");
-    }
-}
 
-function showAll() {
-    const tasks = document.getElementsByClassName("task");
-    for(const task of tasks)
-        task.classList.remove("hidden");
-}
+// function showOpen() {
+//     const tasks = document.getElementsByClassName("task");
+//     for(const task of tasks){
+//         if(task.classList.contains("done"))
+//             task.classList.add("hidden");
+//     }
+// }
 
-function removeClosed() {
-    //Show Problem with const of
-    const tasks = document.getElementsByClassName("task");
-    for(let i = 0; i < tasks.length; i++){
-        if(tasks[i].classList.contains("done")){
-            tasks[i].remove();
-            i--;
-        }
-    }
+// function showAll() {
+//     const tasks = document.getElementsByClassName("task");
+//     for(const task of tasks)
+//         task.classList.remove("hidden");
+// }
 
-    //TODO: Remove person from optionlist, if this was its last Task.
-}
+// function removeClosed() {
+//     //Show Problem with const of
+//     const tasks = document.getElementsByClassName("task");
+//     for(let i = 0; i < tasks.length; i++){
+//         if(tasks[i].classList.contains("done")){
+//             tasks[i].remove();
+//             i--;
+//         }
+//     }
+//
+//     //TODO: Remove person from optionlist, if this was its last Task.
+// }
 
-function filterByPerson(){
-    const person = document.getElementById("filterByPersonSelector").value;
-    const tasks = document.getElementsByClassName("task");
-    for(const task of tasks) {
-        if (task.dataset.owner == person)
-            task.classList.remove("hidden");
-        else
-            task.classList.add("hidden");
-    }
-}
+// function filterByPerson(){
+//     const person = document.getElementById("filterByPersonSelector").value;
+//     const tasks = document.getElementsByClassName("task");
+//     for(const task of tasks) {
+//         if (task.dataset.owner == person)
+//             task.classList.remove("hidden");
+//         else
+//             task.classList.add("hidden");
+//     }
+// }
